@@ -3,3 +3,16 @@
 @media(max-width:900px){.navbar{padding:0 6%}.menu-btn{display:block}.nav-links{position:absolute;top:74px;left:0;right:0;display:none;flex-direction:column;gap:0;padding:10px 6%;background:rgba(8,10,18,.97);border-bottom:1px solid var(--line)}.nav-links.open{display:flex}.nav-links a{padding:13px 0;border-bottom:1px solid #171b28}.hero{grid-template-columns:1fr;padding:75px 6%;gap:55px}.hero-card-wrap{justify-content:flex-start}.about-grid{grid-template-columns:1fr;gap:45px}.projects-grid{grid-template-columns:1fr 1fr}.section{padding:85px 6%}}
 @media(max-width:620px){.hero{padding-top:55px}.hero h1{font-size:48px;letter-spacing:-2px}.hero h2{font-size:18px}.quick-links{flex-wrap:wrap}.quick-links span:nth-child(2){display:none}.skills-grid,.projects-grid{grid-template-columns:1fr}.section-heading{margin-bottom:32px}.section-heading h2{font-size:36px}.skill{padding:16px}.hero-card{max-width:100%}.contact{padding:90px 6%}.contact h2{font-size:45px}footer{flex-direction:column;text-align:center}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.project,.btn,.info-box div{transition:none}}
+/* 3D portfolio hero */
+.hero-card-wrap{perspective:1100px;transform-style:preserve-3d}
+.hero-card{transform-style:preserve-3d;will-change:transform;transition:transform .18s ease-out}
+.hero-card:after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.06);border-radius:22px;pointer-events:none;transform:translateZ(18px)}
+.avatar{transform:translateZ(45px);transition:transform .3s ease}
+.status,.hero-card h3,.hero-card>p,.mini-stats{position:relative;transform:translateZ(28px)}
+.card-orbit{transform:translateX(-50%) translateZ(8px);animation:orbitFloat 5s ease-in-out infinite}
+@keyframes orbitFloat{0%,100%{transform:translateX(-50%) translateY(0) translateZ(8px)}50%{transform:translateX(-50%) translateY(14px) translateZ(8px)}}
+.hero-card-wrap:before,.hero-card-wrap:after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:#a78bfa;filter:blur(1px);box-shadow:0 0 20px #8b5cf6;opacity:.8;animation:float3d 4s ease-in-out infinite}
+.hero-card-wrap:before{margin:-10px 0 0 45px}.hero-card-wrap:after{margin:290px 0 0 300px;background:#22d3ee;box-shadow:0 0 20px #22d3ee;animation-delay:-2s}
+@keyframes float3d{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(10px,-20px,35px)}}
+@media(max-width:900px){.hero-card-wrap{perspective:900px}.hero-card:after{transform:translateZ(10px)}}
+@media(prefers-reduced-motion:reduce){.card-orbit,.hero-card-wrap:before,.hero-card-wrap:after{animation:none}.hero-card{transition:none}}
