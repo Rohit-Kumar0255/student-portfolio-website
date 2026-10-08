@@ -86,6 +86,8 @@ menu.addEventListener('click',()=>nav.classList.toggle('open'));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
+const card=document.querySelector('.hero-card');
+const wrap=document.querySelector('.hero-card-wrap');
+if(card && wrap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){wrap.addEventListener('pointermove',e=>{const r=wrap.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;card.style.transform='rotateY('+(x*12)+'deg) rotateX('+(-y*12)+'deg) translateZ(10px)';});wrap.addEventListener('pointerleave',()=>card.style.transform='rotateY(0deg) rotateX(0deg) translateZ(0)');}</script>
 </body>
 </html>
